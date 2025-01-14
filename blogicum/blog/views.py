@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.forms import UserCreationForm
+from django.core.paginator import Paginator
 
 from .models import Post, Category, Comment 
 from .forms import PostForm, CommentForms
@@ -162,7 +163,7 @@ class PostDeleteView(OnlyAuthorMixin, SuccessReverse, DeleteView):
         return obj
 
 
-class ProfileListlView(ListView):
+class ProfileListView(ListView):
     model = User
     template_name = 'blog/profile.html'
     paginate_by = 10
@@ -172,7 +173,7 @@ class ProfileListlView(ListView):
 
     def get_context_data(self, **kwargs):
         user = get_object_or_404(User, username=self.kwargs['username'])
-        context = super(ProfileListlView, self).get_context_data(**kwargs)
+        context = super(ProfileListView, self).get_context_data(**kwargs)
         context['profile'] = user
         return context
 

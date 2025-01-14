@@ -70,7 +70,7 @@ urlpatterns = [
     ),
     path(
         'accounts/profile/<slug:username>/',
-        views.ProfileListlView.as_view(),
+        views.ProfileListView.as_view(),
         name='profile'
     ),
     path(
