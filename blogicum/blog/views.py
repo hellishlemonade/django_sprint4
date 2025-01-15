@@ -97,7 +97,7 @@ class CategoryListView(ListViewMixin, ListView):
     template_name = 'blog/category.html'
 
     def get_context_data(self, **kwargs):
-        category = get_object_or_404(Category, slug=self.kwargs['slug'])
+        category = get_object_or_404(Category, slug=self.kwargs['slug'], is_published=True)
         context = super(CategoryListView, self).get_context_data(**kwargs)
         context['category'] = category
         return context

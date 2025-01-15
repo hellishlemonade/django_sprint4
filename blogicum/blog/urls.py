@@ -69,7 +69,7 @@ urlpatterns = [
         name='create_post',
     ),
     path(
-        'accounts/profile/<slug:username>/',
+        'profile/<slug:username>/',
         views.ProfileListView.as_view(),
         name='profile'
     ),
