@@ -60,15 +60,11 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = (
         'text',
         'post',
-        'is_published',
         'author',
         'created_at',
     )
     search_fields = (
         'post',
-    )
-    list_editable = (
-        'is_published',
     )
 
 

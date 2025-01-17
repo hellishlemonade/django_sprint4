@@ -93,7 +93,7 @@ class Post(BaseModel):
         return self.title
 
 
-class Comment(BaseModel):
+class Comment(models.Model):
     text = models.TextField('Текст комментария')
     post = models.ForeignKey(
         Post,
@@ -107,11 +107,15 @@ class Comment(BaseModel):
         related_name='comments',
         verbose_name='Автор',
     )
+    created_at = models.DateTimeField(
+        auto_now=False,
+        auto_now_add=True,
+        verbose_name='Добавлено'
+    )
 
     class Meta:
         verbose_name = 'комментарий'
         verbose_name_plural = 'Комментарии'
-        ordering = ('-created_at',)
 
     def __str__(self):
         return self.text[:30]
