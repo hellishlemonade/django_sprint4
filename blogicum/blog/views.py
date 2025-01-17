@@ -242,7 +242,7 @@ class ProfileUpdateView(OnlyUserMixin, SuccessReverse, UpdateView):
 
     model = User
     template_name = 'blog/user.html'
-    fields = ['username', 'first_name', 'last_name', 'email',]
+    fields = ['username', 'first_name', 'last_name', 'email', ]
 
     def get_queryset(self):
         user = self.get_object()
@@ -282,7 +282,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 class CommentUpdateView(OnlyAuthorMixin, CommentMixin, UpdateView):
     """Класс, обрабатывающий редактирование профиля"""
 
-    fields = ['text',]
+    fields = ['text', ]
 
 
 class CommentDeleteView(OnlyAuthorMixin, DeleteView):
